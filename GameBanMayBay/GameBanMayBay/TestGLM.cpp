@@ -37,7 +37,7 @@ void display() {
 
 	DrawAxis();
 	glColor3f(0, 1, 1);
-	glScalef(0.05, 0.05, 0.05);
+	glScalef(0.05f, 0.05f, 0.05f);
 	glmDraw(pmodel, GLM_SMOOTH | GLM_MATERIAL);
 
 	glutSwapBuffers();
