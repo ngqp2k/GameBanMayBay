@@ -1,32 +1,13 @@
 #include "glm.h"
-using namespace std;
-
 #include "GL/freeglut.h"
 #include <string>
 #include <string.h>
-#define PI 3.14159265358
 #define W 640
 #define H 640
 
-const GLfloat factor = 5;
+using namespace std;
 
 GLMmodel *pmodel;
-
-void DrawAxis() {
-	glBegin(GL_LINES);
-	{
-		glColor3f(1, 0, 0);
-		glVertex3f(0, 0, 0);
-		glVertex3f(factor, 0, 0);
-		glColor3f(0, 1, 0);
-		glVertex3f(0, 0, 0);
-		glVertex3f(0, factor, 0);
-		glColor3f(0, 0, 1);
-		glVertex3f(0, 0, 0);
-		glVertex3f(0, 0, factor);
-	}
-	glEnd();
-}
 
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -35,7 +16,7 @@ void display() {
 	glLoadIdentity();
 	gluLookAt(50, 0, 50, 0, 0, 0, 0, 1, 0);
 
-	DrawAxis();
+
 	glColor3f(0, 1, 1);
 	glScalef(0.05f, 0.05f, 0.05f);
 	glmDraw(pmodel, GLM_SMOOTH | GLM_MATERIAL);
@@ -43,18 +24,14 @@ void display() {
 	glutSwapBuffers();
 }
 
-void init() {
-	glClearColor(1, 1, 1, 1);
-	glColor3f(0, 0, 0);
-
-	glEnable(GL_DEPTH_TEST);
-	glFrontFace(GL_CW);
-	glEnable(GL_CULL_FACE);
-
+void reshape(int width, int height)
+{
+	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45, W * 1.0 / H, 1, 1000);
-
+	float ratio = (float)width / (float)height;
+	gluPerspective(45.0, ratio, 1, 100.0);
+	glMatrixMode(GL_MODELVIEW);
 }
 
 int main(int argc, char* agrv[]) {
@@ -64,12 +41,13 @@ int main(int argc, char* agrv[]) {
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("window");
 
-	glutDisplayFunc(display);
 	string path = "Resource/OBJ/dolphins.obj";
 	char* ch = &path[0];
 	pmodel = glmReadOBJ(ch);
 
-	init();
+
+	glutDisplayFunc(display);
+	glutReshapeFunc(reshape);
 
 	glutMainLoop();
 }

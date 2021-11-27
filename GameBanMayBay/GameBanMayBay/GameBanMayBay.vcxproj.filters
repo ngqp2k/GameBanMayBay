@@ -18,7 +18,7 @@
     <ClCompile Include="glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestSOIL.cpp">
+    <ClCompile Include="TestGLM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

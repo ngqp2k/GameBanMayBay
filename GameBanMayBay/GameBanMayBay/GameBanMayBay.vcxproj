@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glm.cpp" />
-    <ClCompile Include="TestSOIL.cpp" />
+    <ClCompile Include="TestGLM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glm.h" />
