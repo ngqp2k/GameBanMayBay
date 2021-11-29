@@ -38,5 +38,4 @@
 *.tlog
 .vs/
 */Debug
-*.vcxproj
-*.filters
+/GameBanMayBay/GameBanMayBay/Debug
