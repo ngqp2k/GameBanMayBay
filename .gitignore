@@ -15,6 +15,7 @@
 *.so
 *.dylib
 *.dll
+!freeglut.dll
 
 # Fortran module files
 *.mod
@@ -25,8 +26,17 @@
 *.la
 *.a
 *.lib
+!SOIL.lib
+!freeglut.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+# New
+*.tlog
+.vs/
+*/Debug
+*.vcxproj
+*.filters
